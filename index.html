@@ -17,123 +17,387 @@
   </head>
 
   <body>
+    <!-- Navbar -->
     <header>
       <nav class="navbar">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <i class="bi bi-spotify text-white"></i>
+          <a href="/" class="navbar-brand ms-3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 24" height="32" fill="white">
+              <path
+                d="M13.427.01C6.805-.253 1.224 4.902.961 11.524.698 18.147 5.853 23.728 12.476 23.99c6.622.263 12.203-4.892 12.466-11.514S20.049.272 13.427.01m5.066 17.579a.717.717 0 0 1-.977.268 14.4 14.4 0 0 0-5.138-1.747 14.4 14.4 0 0 0-5.42.263.717.717 0 0 1-.338-1.392c1.95-.474 3.955-.571 5.958-.29 2.003.282 3.903.928 5.647 1.92a.717.717 0 0 1 .268.978m1.577-3.15a.93.93 0 0 1-1.262.376 17.7 17.7 0 0 0-5.972-1.96 17.7 17.7 0 0 0-6.281.238.93.93 0 0 1-1.11-.71.93.93 0 0 1 .71-1.11 19.5 19.5 0 0 1 6.94-.262 19.5 19.5 0 0 1 6.599 2.165c.452.245.62.81.376 1.263m1.748-3.551a1.147 1.147 0 0 1-1.546.488 21.4 21.4 0 0 0-6.918-2.208 21.4 21.4 0 0 0-7.259.215 1.146 1.146 0 0 1-.456-2.246 23.7 23.7 0 0 1 8.034-.24 23.7 23.7 0 0 1 7.657 2.445c.561.292.78.984.488 1.546"
+              />
+            </svg>
           </a>
 
           <div class="navbar-nav d-flex flex-row gap-2 align-items-center">
             <button class="btn-round"><i class="bi bi-house-door text-white"></i></button>
             <form class="d-flex align-items-center" role="search">
               <div class="d-flex align-items-center searchbar">
-              <i class="bi bi-search text-white"></i>
-              <input class="form-control me-2" type="search" placeholder="Cosa vuoi ascoltare?" aria-label="Search" />
-              <i class="bi bi-archive"></i></div>
+                <i class="bi bi-search text-white"></i>
+                <input class="form-control me-2" type="search" placeholder="Cosa vuoi ascoltare?" aria-label="Search" />
+                <i class="bi bi-archive"></i>
+              </div>
             </form>
           </div>
           <div class="navbar-nav d-flex flex-row gap-2 align-items-center">
             <div class="nav-item">
-              <a class="nav-item" aria-current="page" href="#"><div class="navbar-nav mb-2 mb-lg-0"></div></a></div>
-        <div class="nav-item dropdown">
-          <i class="bi bi-arrow-down-circle"></i>Installa app</a>
+              <a href="#" class="nav-item text-white text-decoration-none"> <i class="bi bi-arrow-down-circle"></i> Installa app </a>
             </div>
             <div class="nav-item">
               <a class="nav-item" href="#"><i class="bi bi-bell text-white"></i></a>
             </div>
             <div class="nav-item">
-              <a class="nav-item" href="#"><i class="bi bi-people text-white"></i></a>
+              <a class="nav-item text-light" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24" height="24" fill="currentColor">
+                  <path
+                    d="M3.849 10.034c-.021-.465.026-.93.139-1.381H1.669c.143-.303.375-.556.665-.724l.922-.532a1.631 1.631 0 0 0 .436-2.458 1.809 1.809 0 0 1-.474-1.081c-.01-.19.01-.38.057-.563a1.123 1.123 0 0 1 .627-.7 1.2 1.2 0 0 1 .944 0c.149.065.282.161.392.281.108.12.188.263.237.417.049.183.068.372.057.561a1.81 1.81 0 0 1-.475 1.084 1.6 1.6 0 0 0-.124 1.9c.36-.388.792-.702 1.272-.927v-.015c.48-.546.768-1.233.821-1.958a3.23 3.23 0 0 0-.135-1.132 2.657 2.657 0 0 0-5.04 0c-.111.367-.157.75-.135 1.133.053.724.341 1.41.821 1.955A.126.126 0 0 1 2.565 6a.13.13 0 0 1-.063.091l-.922.532A3.2 3.2 0 0 0-.004 9.396v.75h3.866c.001-.033-.01-.071-.013-.112zm10.568-3.4-.922-.532a.132.132 0 0 1-.064-.091.12.12 0 0 1 .028-.1c.48-.546.768-1.233.821-1.958a3.289 3.289 0 0 0-.135-1.135A2.635 2.635 0 0 0 12.7 1.233a2.669 2.669 0 0 0-3.042.64 2.646 2.646 0 0 0-.554.948c-.11.367-.156.75-.134 1.133.053.724.341 1.41.821 1.955.005.006 0 .011 0 .018.48.225.911.54 1.272.927a1.6 1.6 0 0 0-.125-1.907 1.809 1.809 0 0 1-.474-1.081c-.01-.19.009-.38.057-.563a1.123 1.123 0 0 1 .627-.7 1.2 1.2 0 0 1 .944 0c.149.065.282.161.392.281.107.12.187.26.236.413.05.184.07.375.058.565a1.81 1.81 0 0 1-.475 1.084 1.633 1.633 0 0 0 .438 2.456l.922.532c.29.169.52.421.664.724h-2.319c.113.452.16.918.139 1.383 0 .04-.013.078-.017.117h3.866v-.75a3.2 3.2 0 0 0-1.58-2.778v.004zm-3.625 6-.922-.532a.13.13 0 0 1-.061-.144.122.122 0 0 1 .025-.047 3.33 3.33 0 0 0 .821-1.958 3.229 3.229 0 0 0-.135-1.132 2.657 2.657 0 0 0-5.041 0c-.11.367-.156.75-.134 1.133.053.724.341 1.41.821 1.955a.127.127 0 0 1 .028.106.128.128 0 0 1-.063.091l-.922.532a3.2 3.2 0 0 0-1.584 2.773v.75h8.75v-.75a3.2 3.2 0 0 0-1.583-2.781v.004zm-5.5 2.023c.143-.303.375-.556.665-.724l.922-.532a1.63 1.63 0 0 0 .436-2.458 1.809 1.809 0 0 1-.474-1.081c-.01-.19.009-.38.057-.563a1.123 1.123 0 0 1 .627-.7 1.2 1.2 0 0 1 .944 0c.149.065.282.161.392.281.108.12.188.263.237.417.049.183.068.372.057.561a1.81 1.81 0 0 1-.475 1.084 1.632 1.632 0 0 0 .438 2.456l.922.532c.29.169.52.421.664.724l-5.412.003z"
+                  ></path>
+                </svg>
+              </a>
             </div>
             <div class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i class="bi bi-person-circle"></i> </a>
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle"></i>
+              </a>
             </div>
           </div>
         </div>
       </nav>
     </header>
-
-    <div class="container-fluid gx-2">
-      <div class="row">
-        <div class="col-12 col-md-2 ">
-          <div class="div-background">
-          <div class="d-flex align-items-center justify-content-between">
-            <div><h1>La tua libreria</h1></div>
-            <div>
-              <div class="d-flex align-items-center gap-4">
+    <!-- Left Sidebar -->
+    <main>
+      <div class="container-fluid">
+        <div class="row g-2">
+          <div class="col-12 col-md-2">
+            <div class="div-background p-3 rounded-3">
+              <div class="d-flex align-items-center justify-content-between">
+                <div><h1>La tua libreria</h1></div>
                 <div>
-                <i class="bi bi-plus-lg"></i>
-                <span>Crea</span>
+                  <div class="d-flex align-items-center gap-4">
+                    <div>
+                      <i class="bi bi-plus-lg"></i>
+                      <span>Crea</span>
+                    </div>
+                    <i class="bi bi-arrows-angle-expand"></i>
+                  </div>
                 </div>
-                <i class="bi bi-arrows-angle-expand"></i>
+              </div>
+              <div class="d-flex mt-3 gap-2">
+                <span class="btn">Playlist</span>
+                <span class="btn">Artisti</span>
+                <span class="btn">Album</span>
+              </div>
+              <div class="d-flex mt-3 justify-content-between align-items-center">
+                <i class="bi bi-search"></i>
+                <div class="d-flex align-items-center gap-2">
+                  <span>Recenti</span>
+                  <i class="bi bi-list-task"></i>
+                </div>
               </div>
             </div>
           </div>
-          <div class="d-flex mt-3 gap-2 ">
-            <span class="btn">Playlist</span>
-            <span class="btn">Artisti</span>
-            <span class="btn">Album</span>
-          </div>
-          <div class="d-flex mt-3 justify-content-between align-items-center">
-            <i class="bi bi-search"></i>
-            <div class="d-flex align-items-center gap-2">
-              <span>Recenti</span>
-              <i class="bi bi-list-task"></i>
-            </div>
-          </div>
-          </div>
+          <!-- Main content central -->
+          <div class="col-12 col-md-8">
+            <!-- Filters -->
+            <div class="div-background-gradient rounded-3 px-3">
+              <div class="d-flex pt-3 gap-2 px-3">
+                <span class="btn active">Tutto</span>
+                <span class="btn">Musica</span>
+                <span class="btn">Podcast</span>
+                <span class="btn">Audiolibri</span>
+              </div>
 
+              <!-- Create per te section -->
+              <div class="container-fluid mt-4 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h2 class="m-0">Create per te</h2>
+                  <span class="text-light fw-bold">Mostra tutto</span>
+                </div>
 
+                <div class="row">
+                  <!-- Item 1 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
 
+                  <!-- Item 2 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
 
+                  <!-- Item 3 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
 
-        </div>
-        <div class="col-12 col-md-8 div-background-gradient ">
-          <div class="d-flex mt-3 gap-2 ">
-            <span class="btn">Tutto</span>
-            <span class="btn">Musica</span>
-            <span class="btn">Podcast</span>
-          </div>
-          <div class="container-fluid">
-            <div class="d-flex justify-content-between ">
-              <h2>Stazioni radio più popolari</h2>
-              <span>Mostra tutto</span>
-            </div>
-            <div class="grid-container">
-            </div>
-          </div>
-          <div class="container-fluid">
-            <div class="d-flex justify-content-between ">
-              <h2>Artisti più popolari</h2>
-              <span>Mostra tutto</span>
-            </div>
-            <div class="grid-container">
-            </div>
-          </div>
-          <div class="container-fluid">
-            <div class="d-flex justify-content-between ">
-              <h2>Ascoltati di recente</h2>
-              <span>Mostra tutto</span>
-            </div>
-            <div class="grid-container">
-            </div>
-          </div>
-          <div class="container-fluid">
-            <div class="d-flex justify-content-between ">
-              <h2>Album e singoli popolari</h2>
-              <span>Mostra tutto</span>
-            </div>
-            <div class="grid-container">
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-2 div-background">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam ipsam consectetur nostrum exercitationem odio tenetur, facilis facere quod. Molestiae nemo facilis dolores! Minima repudiandae amet dolorum vitae ipsum accusamus adipisci?</p>
+                  <!-- Item 4 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
 
+                  <!-- Item 5 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 6 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Consigliati per te -->
+              <div class="container-fluid mt-4 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h2 class="m-0">Consigliati per te</h2>
+                  <span class="text-light fw-bold">Mostra tutto</span>
+                </div>
+
+                <div class="row">
+                  <!-- Item 1 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 2 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 3 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 4 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 5 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 6 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Altro -->
+              <div class="container-fluid mt-4 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h2 class="m-0">Altro</h2>
+                  <span class="text-light fw-bold">Mostra tutto</span>
+                </div>
+
+                <div class="row">
+                  <!-- Item 1 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 2 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 3 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 4 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 5 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 6 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container-fluid mt-4 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h2 class="m-0">Altro</h2>
+                  <span class="text-light fw-bold">Mostra tutto</span>
+                </div>
+
+                <div class="row">
+                  <!-- Item 1 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 2 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 3 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 4 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 5 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Item 6 -->
+                  <div class="col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4">
+                    <div class="card bg-dark p-3 pb-0 h-100">
+                      <img src="assets2/imgs/search/image-1.jpeg" class="card-img-top" alt="Discover Weekly" />
+                      <div class="card-body p-0 py-3">
+                        <p class="card-text text-light">Il tuo mixtape settimanale di musica...</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right Sidebar -->
+          <div class="col-12 col-md-2">
+            <div class="div-background rounded-3">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam ipsam consectetur nostrum exercitationem odio tenetur, facilis facere quod.
+                Molestiae nemo facilis dolores! Minima repudiandae amet dolorum vitae ipsum accusamus adipisci?
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
+    </main>
+    <!-- Player Bar fixed bottom-->
+    <footer></footer>
     <!-- BOOTSTRAP JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
