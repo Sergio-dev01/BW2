@@ -1,4 +1,4 @@
-mainfetch = () => {
+mainFetch = (containerNum, start, end) => {
   const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=artist/%7Bid%7D`;
   const options = {
     method: "GET",
@@ -23,9 +23,11 @@ mainfetch = () => {
     })
     .then(data => {
       console.log(data);
-      const grid = document.querySelector(".main-grid-container");
+      const slicedData = data.data.slice(start, end);
+      console.log(slicedData);
+      const grid = document.querySelector(`.${containerNum}-main-grid-container`);
 
-      data.data.forEach(artist => {
+      slicedData.forEach(artist => {
         console.log(artist);
         console.log(artist.album);
         const col = document.createElement("div");
@@ -42,7 +44,7 @@ mainfetch = () => {
         div.className = "card-body p-0 py-3";
 
         const p = document.createElement("p");
-        p.className = "card-text";
+        p.className = "card-text text-white";
         p.innerText = artist.album.title;
 
         div.appendChild(p);
@@ -58,5 +60,7 @@ mainfetch = () => {
 };
 
 window.onload = () => {
-  mainfetch();
+  mainFetch("first", 0, 6);
+  mainFetch("second", 7, 13);
+  mainFetch("third", 14, 20);
 };
