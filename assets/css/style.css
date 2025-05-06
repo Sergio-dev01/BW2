@@ -4332,11 +4332,11 @@ textarea.form-control-lg {
   --bs-card-title-spacer-y: 0.5rem;
   --bs-card-title-color: ;
   --bs-card-subtitle-color: ;
-  --bs-card-border-width: var(--bs-border-width);
+  --bs-card-border-width: none;
   --bs-card-border-color: var(--bs-border-color-translucent);
   --bs-card-border-radius: var(--bs-border-radius);
   --bs-card-box-shadow: ;
-  --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+  --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (none));
   --bs-card-cap-padding-y: 0.5rem;
   --bs-card-cap-padding-x: 1rem;
   --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
@@ -11969,6 +11969,8 @@ body {
   font-family: "Circular";
   background-color: #000000;
   color: #ffffff;
+  height: 100%;
+  margin: 0;
 }
 
 .btn-round {
@@ -12014,6 +12016,7 @@ input[type=search]::placeholder {
 h1, .h1 {
   font-size: 1rem;
   font-weight: bold;
+  margin: 0;
 }
 
 .btn {
@@ -12024,6 +12027,10 @@ h1, .h1 {
   border-radius: 20px;
 }
 
+span .btn:active {
+  background-color: #ffffff !important;
+}
+
 h2, .h2 {
   font-weight: bold;
 }
@@ -12031,6 +12038,7 @@ h2, .h2 {
 .card {
   background-color: transparent;
   cursor: pointer;
+  border: none;
 }
 
 .card:hover {
@@ -12082,4 +12090,34 @@ input[type=search]::placeholder {
   border-left: 1px solid #a6a6a6;
   padding-left: 8px;
   margin-left: 8px;
+}
+
+.upperCard {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  background-color: #414141;
+  max-height: 60px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.upperCard:hover {
+  background-color: #5b5b5b;
+}
+
+.upperCard img {
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 60px;
+}
+
+.upper-main-grid-container {
+  width: 95%;
+  margin-inline: auto;
+}
+
+.crea-btn {
+  background-color: #272727;
 }/*# sourceMappingURL=style.css.map */

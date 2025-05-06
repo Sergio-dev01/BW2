@@ -59,8 +59,70 @@ mainFetch = (containerNum, start, end) => {
     });
 };
 
+upperMainFetch = () => {
+  const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=i`;
+  const options = {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": token,
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    },
+  };
+
+  fetch(url, options)
+    .then(resp => {
+      console.log(resp);
+      if (!resp.ok) {
+        if (resp.status === 404) {
+          throw new Error("Risorsa non trovata");
+        } else if (resp.status >= 500) {
+          throw new Error("Errore lato server");
+        }
+        throw new Error("Errore nella fetch");
+      }
+      return resp.json();
+    })
+    .then(data => {
+      console.log(data);
+      const slicedData = data.data.slice(0, 8);
+      console.log(slicedData);
+      const grid = document.querySelector(`.upper-main-grid-container`);
+
+      slicedData.forEach(artist => {
+        console.log(artist);
+        console.log(artist.album);
+        const col = document.createElement("div");
+        col.className = "col-6 col-sm-4 col-md-3 col-lg-3 px-1 mb-2";
+
+        const card = document.createElement("div");
+        card.className = "pb-0 upperCard";
+
+        const img = document.createElement("img");
+        img.className = "upperCardImg";
+        img.src = artist.album.cover;
+
+        const div = document.createElement("div");
+        div.className = "p-0 py-3";
+
+        const p = document.createElement("p");
+        p.className = "card-text text-white";
+        p.innerText = artist.album.title;
+
+        div.appendChild(p);
+        card.appendChild(img);
+        card.appendChild(div);
+        col.appendChild(card);
+        grid.appendChild(col);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
 window.onload = () => {
   mainFetch("first", 0, 6);
   mainFetch("second", 7, 13);
   mainFetch("third", 14, 20);
+  upperMainFetch();
 };
