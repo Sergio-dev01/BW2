@@ -28,7 +28,7 @@ fetchArtists("e").then((tracks) => {
       uniqueArtists.push(artist.id);
 
       const artistItem = document.createElement("div");
-      artistItem.className = "d-flex align-items-center gap-2";
+      artistItem.className = "artist-item d-flex align-items-center gap-2 mb-2";
 
       const img = document.createElement("img");
       img.src = artist.picture_small;
@@ -37,11 +37,13 @@ fetchArtists("e").then((tracks) => {
       img.width = 40;
       img.height = 40;
 
-      const name = document.createElement("span");
-      name.textContent = artist.name;
+      const link = document.createElement("a");
+      link.href = `artist.html?id=${artist.id}`;
+      link.textContent = artist.name;
+      link.className = "artist-link";
 
       artistItem.appendChild(img);
-      artistItem.appendChild(name);
+      artistItem.appendChild(link);
 
       artistList.appendChild(artistItem);
     }
