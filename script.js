@@ -3,7 +3,7 @@ mainFetch = (containerNum, start, end) => {
   const options = {
     method: "GET",
     headers: {
-      "x-rapidapi-key": "cfbe681d65msha7a8ce168ada71cp1a66f5jsn2e9a80fada09",
+      "x-rapidapi-key": token,
       "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
     },
   };
