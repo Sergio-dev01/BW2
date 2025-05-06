@@ -3,7 +3,7 @@ const fetchArtists = (query = "e") => {
   const options = {
     method: "GET",
     headers: {
-      "x-rapidapi-key": "8459b56e94msh8dcb07c5aa8a2fbp16c8c2jsn6eebaa59843a",
+      "x-rapidapi-key": key,
       "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
     },
   };
