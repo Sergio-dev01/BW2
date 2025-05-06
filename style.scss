@@ -12,6 +12,8 @@ body {
   color: $text-color;
 }
 
+// Navbar
+
 .btn-round {
   background-color: $primary-color;
   border: none;
@@ -62,4 +64,40 @@ h1 {
 
 h2 {
   font-weight: bold;
+}
+
+// player-bar
+.player-bar {
+  background-color: black;
+}
+
+.listening-btn-wrapper {
+  position: relative;
+
+  .listening-btn::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: #1db954;
+    border-radius: 50%;
+    opacity: 0; // nascosto di default
+    transition: opacity 0.2s ease;
+  }
+
+  .listening-btn.active::after {
+    opacity: 1; // visibile solo sul bottone attivo
+  }
+}
+
+.progress-bar {
+  background-color: #1db954;
+}
+
+.progress {
+  background-color: #535353;
+  height: 4px;
 }

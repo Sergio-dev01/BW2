@@ -11902,4 +11902,37 @@ h1, .h1 {
 
 h2, .h2 {
   font-weight: bold;
+}
+
+.player-bar {
+  background-color: black;
+}
+
+.listening-btn-wrapper {
+  position: relative;
+}
+.listening-btn-wrapper .listening-btn::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: #1db954;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.listening-btn-wrapper .listening-btn.active::after {
+  opacity: 1;
+}
+
+.progress-bar {
+  background-color: #1db954;
+}
+
+.progress {
+  background-color: #535353;
+  height: 4px;
 }/*# sourceMappingURL=style.css.map */
