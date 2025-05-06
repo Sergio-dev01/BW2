@@ -40,7 +40,7 @@ input[type="search"]::placeholder {
 }
 
 .div-background-gradient {
-  background: #222222;
+  background: #121212;
   background: linear-gradient(180deg, rgba(34, 34, 34, 1) 0%, rgba(18, 18, 18, 1) 100%);
 }
 
@@ -62,4 +62,13 @@ h1 {
 
 h2 {
   font-weight: bold;
+}
+
+.card {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #1d1d1d;
 }

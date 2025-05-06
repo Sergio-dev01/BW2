@@ -9,7 +9,7 @@ mainFetch = (containerNum, start, end) => {
   };
 
   fetch(url, options)
-    .then((resp) => {
+    .then(resp => {
       console.log(resp);
       if (!resp.ok) {
         if (resp.status === 404) {
@@ -21,20 +21,20 @@ mainFetch = (containerNum, start, end) => {
       }
       return resp.json();
     })
-    .then((data) => {
+    .then(data => {
       console.log(data);
       const slicedData = data.data.slice(start, end);
       console.log(slicedData);
       const grid = document.querySelector(`.${containerNum}-main-grid-container`);
 
-      slicedData.forEach((artist) => {
+      slicedData.forEach(artist => {
         console.log(artist);
         console.log(artist.album);
         const col = document.createElement("div");
         col.className = "col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4";
 
         const card = document.createElement("div");
-        card.className = "card bg-dark p-3 pb-0 h-100";
+        card.className = "card p-3 pb-0 h-100";
 
         const img = document.createElement("img");
         img.className = "card-img-top";
@@ -54,7 +54,7 @@ mainFetch = (containerNum, start, end) => {
         grid.appendChild(col);
       });
     })
-    .catch((error) => {
+    .catch(error => {
       console.log(error);
     });
 };
