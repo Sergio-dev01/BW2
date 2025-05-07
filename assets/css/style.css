@@ -4332,11 +4332,11 @@ textarea.form-control-lg {
   --bs-card-title-spacer-y: 0.5rem;
   --bs-card-title-color: ;
   --bs-card-subtitle-color: ;
-  --bs-card-border-width: var(--bs-border-width);
+  --bs-card-border-width: none;
   --bs-card-border-color: var(--bs-border-color-translucent);
   --bs-card-border-radius: var(--bs-border-radius);
   --bs-card-box-shadow: ;
-  --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+  --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (none));
   --bs-card-cap-padding-y: 0.5rem;
   --bs-card-cap-padding-x: 1rem;
   --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
@@ -12122,4 +12122,34 @@ input[type=search]::placeholder {
   height: 24px;
   vertical-align: middle;
   margin-left: 8px;
+}
+
+.upperCard {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  background-color: #414141;
+  max-height: 60px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.upperCard:hover {
+  background-color: #5b5b5b;
+}
+
+.upperCard img {
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 60px;
+}
+
+.upper-main-grid-container {
+  width: 95%;
+  margin-inline: auto;
+}
+
+.crea-btn {
+  background-color: #272727;
 }/*# sourceMappingURL=style.css.map */

@@ -127,7 +127,7 @@ const fetchArtistAlbums = id => {
       const slicedData = data.data.slice(0, 5);
       slicedData.forEach((track, index) => {
         const col = document.createElement("div");
-        col.className = "col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4";
+        col.className = "col-12 col-sm-6 col-md-4 col-lg-2 px-1";
 
         const card = document.createElement("div");
         card.className = "d-flex align-items-center gap-2 p-3 pb-0";
