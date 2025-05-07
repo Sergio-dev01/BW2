@@ -11914,7 +11914,7 @@ h2, .h2 {
 .listening-btn-wrapper .listening-btn::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
   width: 4px;
@@ -11928,11 +11928,20 @@ h2, .h2 {
   opacity: 1;
 }
 
-.progress-bar {
-  background-color: #1db954;
-}
-
 .progress {
   background-color: #535353;
   height: 4px;
+  cursor: pointer;
+}
+.progress .progress-bar {
+  background-color: #efefef;
+  height: 100%;
+  transition: background-color 0.15s ease-in-out;
+}
+.progress:hover .progress-bar {
+  background-color: #1db954;
+}
+
+.volume {
+  width: 90px;
 }/*# sourceMappingURL=style.css.map */
