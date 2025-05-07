@@ -2,7 +2,7 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 // dettagli dell'artista
-const fetchArtistDetails = id => {
+const fetchArtistDetails = (id) => {
   fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${id}`, {
     method: "GET",
     headers: {
@@ -10,7 +10,7 @@ const fetchArtistDetails = id => {
       "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
     },
   })
-    .then(resp => {
+    .then((resp) => {
       console.log(resp);
       if (!resp.ok) {
         if (resp.status === 404) {
@@ -22,7 +22,7 @@ const fetchArtistDetails = id => {
       }
       return resp.json();
     })
-    .then(artist => {
+    .then((artist) => {
       if (!artist) {
         console.error("Dati artista non validi.");
         return;
@@ -32,11 +32,15 @@ const fetchArtistDetails = id => {
       const header = document.getElementById("artist-header");
 
       const divImg = document.createElement("div");
-      divImg.style.height = "30px";
+      divImg.style.height = "350px";
+      divImg.style.overflow = "hidden";
 
       const artistImg = document.createElement("img");
       artistImg.src = artist.picture_xl;
       artistImg.className = "img-fluid rounded mb-3 artist-img";
+      artistImg.style.height = "100%";
+      artistImg.style.width = "100%";
+      artistImg.style.objectFit = "cover";
 
       const artistH1 = document.createElement("h1");
       artistH1.innerText = artist.name;
@@ -45,17 +49,17 @@ const fetchArtistDetails = id => {
       header.appendChild(artistH1);
       divImg.appendChild(artistImg);
     })
-    .catch(err => {
+    .catch((err) => {
       console.error("Errore nel recupero dettagli artista:", err);
     });
 };
 
-fetchArtistAlbums = id => {
+fetchArtistAlbums = (id) => {
   // URL con il proxy di Strive School
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
-    .then(resp => {
+    .then((resp) => {
       console.log(resp);
       if (!resp.ok) {
         if (resp.status === 404) {
@@ -67,7 +71,7 @@ fetchArtistAlbums = id => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       console.log(data);
 
       // Recupero l'elemento che conterrà gli album
@@ -118,7 +122,7 @@ fetchArtistAlbums = id => {
         albumList.appendChild(col);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
