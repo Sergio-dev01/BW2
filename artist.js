@@ -98,7 +98,6 @@ const fetchArtistDetails = id => {
       infoContainer.appendChild(verifiedRow);
       infoContainer.appendChild(artistH1);
       infoContainer.appendChild(listenersSpan);
-
       divImg.appendChild(artistImg);
       divImg.appendChild(infoContainer);
       header.appendChild(divImg);
@@ -108,7 +107,7 @@ const fetchArtistDetails = id => {
     });
 };
 
-const fetchArtistAlbums = id => {
+const fetchArtistTrack = id => {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
@@ -121,14 +120,15 @@ const fetchArtistAlbums = id => {
       return resp.json();
     })
     .then(data => {
+      const trackList = document.getElementById("track-list");
       const albumList = document.getElementById("album-list");
+      trackList.innerHTML = "";
       albumList.innerHTML = "";
+
+      console.log(data);
 
       const slicedData = data.data.slice(0, 5);
       slicedData.forEach((track, index) => {
-        const col = document.createElement("div");
-        col.className = "col-12 col-sm-6 col-md-4 col-lg-2 px-1";
-
         const card = document.createElement("div");
         card.className = "d-flex align-items-center gap-2 p-3 pb-0";
 
@@ -165,7 +165,29 @@ const fetchArtistAlbums = id => {
         card.appendChild(trackNumber);
         card.appendChild(img);
         card.appendChild(containerPdiv);
-        col.appendChild(card);
+        trackList.appendChild(card);
+
+        const col = document.createElement("div");
+        col.className = "col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4";
+
+        const cardAlbum = document.createElement("div");
+        cardAlbum.className = "card p-3 pb-0 h-100";
+
+        const imgAlbum = document.createElement("img");
+        imgAlbum.className = "card-img-top";
+        imgAlbum.src = track.album.cover;
+
+        const div = document.createElement("div");
+        div.className = "card-body p-0 py-3";
+
+        const p = document.createElement("p");
+        p.className = "card-text text-white";
+        p.innerText = track.album.title;
+
+        div.appendChild(p);
+        cardAlbum.appendChild(imgAlbum);
+        cardAlbum.appendChild(div);
+        col.appendChild(cardAlbum);
         albumList.appendChild(col);
       });
     })
@@ -174,7 +196,153 @@ const fetchArtistAlbums = id => {
     });
 };
 
+const fetchArtistAlbum = id => {
+  const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
+
+  fetch(url)
+    .then(resp => {
+      if (!resp.ok) {
+        if (resp.status === 404) throw new Error("Risorsa non trovata");
+        if (resp.status >= 500) throw new Error("Errore lato server");
+        throw new Error("Errore nella fetch");
+      }
+      return resp.json();
+    })
+    .then(data => {
+      const albumList = document.getElementById("album-list");
+      albumList.innerHTML = "";
+
+      console.log(data);
+
+      const slicedData = data.data.slice(0, 6);
+      slicedData.forEach((track, index) => {
+        const col = document.createElement("div");
+        col.className = "col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4";
+
+        const cardAlbum = document.createElement("div");
+        cardAlbum.className = "card p-3 pb-0 h-100";
+
+        const imgAlbum = document.createElement("img");
+        imgAlbum.className = "card-img-top";
+        imgAlbum.src = track.album.cover;
+
+        const div = document.createElement("div");
+        div.className = "card-body p-0 py-3";
+
+        const p = document.createElement("p");
+        p.className = "card-text text-white";
+        p.innerText = track.album.title;
+
+        div.appendChild(p);
+        cardAlbum.appendChild(imgAlbum);
+        cardAlbum.appendChild(div);
+        col.appendChild(cardAlbum);
+        albumList.appendChild(col);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+const fetchArtistVideo = id => {
+  const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
+
+  fetch(url)
+    .then(resp => {
+      if (!resp.ok) {
+        if (resp.status === 404) throw new Error("Risorsa non trovata");
+        if (resp.status >= 500) throw new Error("Errore lato server");
+        throw new Error("Errore nella fetch");
+      }
+      return resp.json();
+    })
+    .then(data => {
+      const videoList = document.getElementById("video-list");
+      const littleCard = document.getElementById("little-card");
+      videoList.innerHTML = "";
+
+      console.log(data);
+
+      const imgLittleCard = document.createElement("img");
+      imgLittleCard.className = "imgLittleCard";
+      imgLittleCard.src = data.data.album.cover;
+
+      littleCard.appendChild(imgLittleCard);
+
+      const slicedData = data.data.slice(4);
+      slicedData.forEach((track, index) => {
+        const colVideo = document.createElement("div");
+        colVideo.className = "col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4";
+
+        const cardVideo = document.createElement("div");
+        cardVideo.className = "card p-3 pb-0 h-100";
+
+        const imgVideo = document.createElement("img");
+        imgVideo.className = "card-img-top";
+        imgVideo.src = track.album.cover;
+
+        const divVideo = document.createElement("div");
+        divVideo.className = "card-body p-0 py-3";
+
+        const p = document.createElement("p");
+        p.className = "card-text text-white";
+        p.innerText = track.album.title;
+
+        divVideo.appendChild(p);
+        cardVideo.appendChild(imgVideo);
+        cardVideo.appendChild(divVideo);
+        colVideo.appendChild(cardVideo);
+        videoList.appendChild(colVideo);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+const fetchLittleCard = id => {
+  const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
+
+  fetch(url)
+    .then(resp => {
+      if (!resp.ok) {
+        if (resp.status === 404) throw new Error("Risorsa non trovata");
+        if (resp.status >= 500) throw new Error("Errore lato server");
+        throw new Error("Errore nella fetch");
+      }
+      return resp.json();
+    })
+    .then(data => {
+      const littleCard = document.getElementById("little-card");
+      littleCard.innerHTML = "";
+
+      console.log(data);
+
+      const slicedData = data.data.slice(1, 2);
+      slicedData.forEach(track => {
+        const imgLittleCard = document.createElement("img");
+        imgLittleCard.className = "imgLittleCard";
+        imgLittleCard.src = track.album.cover;
+
+        littleCard.appendChild(imgLittleCard);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+const logo = document.getElementById("logo");
+
+logo.addEventListener("click", function () {
+  window.location.href = "index.html";
+});
+
 window.onload = () => {
   fetchArtistDetails(id);
-  fetchArtistAlbums(id);
+  fetchArtistTrack(id);
+  fetchArtistAlbum(id);
+  fetchArtistVideo(id);
+  fetchLittleCard(id);
 };

@@ -179,3 +179,92 @@ input[type="search"]::placeholder {
 .crea-btn {
   background-color: #272727;
 }
+
+// player-bar / volume-bar style
+$track-color: #535353;
+$fill-color-normal: #efefef;
+$spotify-color: #1db954;
+$track-height: 4px;
+
+.player-bar {
+  background-color: black;
+}
+
+.listening-btn-wrapper {
+  position: relative;
+
+  .listening-btn::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: $spotify-color;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .listening-btn.active::after {
+    opacity: 1;
+  }
+}
+
+.progress {
+  background-color: $track-color;
+  height: $track-height;
+  cursor: pointer;
+
+  .progress-bar {
+    background-color: $fill-color-normal;
+    height: 100%;
+    transition: background-color 0.15s ease-in-out;
+  }
+
+  &:hover .progress-bar {
+    background-color: $spotify-color;
+  }
+}
+
+.volume {
+  width: 90px;
+}
+
+#little-card {
+  border: 3px solid grey;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.imgLittleCard {
+  width: 30px;
+  height: 40px;
+  object-fit: cover;
+  aspect-ratio: 9/16;
+  border-radius: 5px;
+}
+
+.btnSegui {
+  background-color: transparent;
+  color: white;
+  padding: 8px;
+  font-weight: 600;
+  border-radius: 20px;
+  border: 1.5px solid grey;
+  width: 80px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnSegui:hover {
+  border: 2.3px solid white;
+}
+
+.threeDots {
+  font-size: 2rem;
+  letter-spacing: 3rem;
+}

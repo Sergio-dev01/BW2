@@ -12152,4 +12152,84 @@ input[type=search]::placeholder {
 
 .crea-btn {
   background-color: #272727;
+}
+
+.player-bar {
+  background-color: black;
+}
+
+.listening-btn-wrapper {
+  position: relative;
+}
+.listening-btn-wrapper .listening-btn::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: #1db954;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.listening-btn-wrapper .listening-btn.active::after {
+  opacity: 1;
+}
+
+.progress {
+  background-color: #535353;
+  height: 4px;
+  cursor: pointer;
+}
+.progress .progress-bar {
+  background-color: #efefef;
+  height: 100%;
+  transition: background-color 0.15s ease-in-out;
+}
+.progress:hover .progress-bar {
+  background-color: #1db954;
+}
+
+.volume {
+  width: 90px;
+}
+
+#little-card {
+  border: 3px solid grey;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.imgLittleCard {
+  width: 30px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 9/16;
+  border-radius: 5px;
+}
+
+.btnSegui {
+  background-color: transparent;
+  color: white;
+  padding: 8px;
+  font-weight: 600;
+  border-radius: 20px;
+  border: 1.5px solid grey;
+  width: 80px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnSegui:hover {
+  border: 2.3px solid white;
+}
+
+.threeDots {
+  font-size: 2rem;
+  letter-spacing: 3rem;
 }/*# sourceMappingURL=style.css.map */
