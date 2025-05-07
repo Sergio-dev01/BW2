@@ -12082,4 +12082,37 @@ input[type=search]::placeholder {
   border-left: 1px solid #a6a6a6;
   padding-left: 8px;
   margin-left: 8px;
+}
+
+.artist-item {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.artist-item:hover {
+  background-color: #2a2a2a;
+}
+
+.artist-link {
+  color: white;
+  text-decoration: none;
+}
+
+.imgTrack {
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.pTrack:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.artist-img {
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=style.css.map */

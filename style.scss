@@ -127,3 +127,19 @@ input[type="search"]::placeholder {
   color: white;
   text-decoration: none;
 }
+
+.imgTrack {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.pTrack:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.artist-img {
+  object-fit: cover;
+}
