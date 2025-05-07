@@ -11,13 +11,9 @@ const fetchArtistDetails = (id) => {
     },
   })
     .then((resp) => {
-      console.log(resp);
       if (!resp.ok) {
-        if (resp.status === 404) {
-          throw new Error("Risorsa non trovata");
-        } else if (resp.status >= 500) {
-          throw new Error("Errore lato server");
-        }
+        if (resp.status === 404) throw new Error("Risorsa non trovata");
+        if (resp.status >= 500) throw new Error("Errore lato server");
         throw new Error("Errore nella fetch");
       }
       return resp.json();
@@ -28,12 +24,12 @@ const fetchArtistDetails = (id) => {
         return;
       }
 
-      // inserisco immagine e nome
       const header = document.getElementById("artist-header");
 
       const divImg = document.createElement("div");
       divImg.style.height = "350px";
       divImg.style.overflow = "hidden";
+      divImg.style.position = "relative";
 
       const artistImg = document.createElement("img");
       artistImg.src = artist.picture_xl;
@@ -42,44 +38,93 @@ const fetchArtistDetails = (id) => {
       artistImg.style.width = "100%";
       artistImg.style.objectFit = "cover";
 
+      // Container per h1,span e svg
+      const infoContainer = document.createElement("div");
+      infoContainer.style.position = "absolute";
+      infoContainer.style.bottom = "20px";
+      infoContainer.style.left = "20px";
+      infoContainer.style.zIndex = "10";
+      infoContainer.style.color = "white";
+      infoContainer.style.textShadow = "1px 1px 4px black";
+
+      // riga "Artista verificato"
+      const verifiedRow = document.createElement("div");
+      verifiedRow.style.display = "flex";
+      verifiedRow.style.alignItems = "center";
+      verifiedRow.style.gap = "5px";
+
+      const verifiedSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      verifiedSvg.setAttribute("viewBox", "0 0 24 24");
+      verifiedSvg.setAttribute("aria-hidden", "true");
+      verifiedSvg.classList.add("verified-badge");
+
+      verifiedSvg.innerHTML = `
+  <title>Verified account</title>
+  <!-- contorno azzurro -->
+  <path fill="#1DA1F2" d="M10.814.5a1.658 1.658 0 0 1 2.372 0l2.512 2.572
+      3.595-.043a1.658 1.658 0 0 1 1.678 1.678l-.043 3.595 2.572 2.512c.667.65.667
+      1.722 0 2.372l-2.572 2.512.043 3.595a1.658 1.658 0 0 1-1.678
+      1.678l-3.595-.043-2.512 2.572a1.658 1.658 0 0 1-2.372
+      0l-2.512-2.572-3.595.043a1.658 1.658 0 0 1-1.678-1.678l.043-3.595L.5
+      13.186a1.658 1.658 0 0 1 0-2.372l2.572-2.512-.043-3.595a1.658
+      1.658 0 0 1 1.678-1.678l3.595.043L10.814.5z"/>
+  <!-- spunta bianca -->
+  <path fill="#FFFFFF" d="M17.398 9.62a1 1 0 0 0-1.414-1.413l-6.011
+      6.01-1.894-1.893a1 1 0 0 0-1.414
+      1.414l3.308 3.308 7.425-7.425z"/>
+`;
+
+      const verifiedText = document.createElement("span");
+      verifiedText.innerText = "Artista verificato";
+      verifiedText.style.fontSize = "0.9rem";
+
+      verifiedRow.appendChild(verifiedSvg);
+      verifiedRow.appendChild(verifiedText);
+
+      // Nome artista
       const artistH1 = document.createElement("h1");
       artistH1.innerText = artist.name;
+      artistH1.style.margin = "0";
+      artistH1.style.fontSize = "4rem";
+      artistH1.style.fontWeight = "bold";
 
-      header.appendChild(divImg);
-      header.appendChild(artistH1);
+      // Ascoltatori mensili
+      const listenersSpan = document.createElement("span");
+      listenersSpan.innerText = `${artist.nb_fan} ascoltatori mensili`;
+      listenersSpan.style.fontSize = "1rem";
+      listenersSpan.style.marginTop = "5px";
+
+      infoContainer.appendChild(verifiedRow);
+      infoContainer.appendChild(artistH1);
+      infoContainer.appendChild(listenersSpan);
+
       divImg.appendChild(artistImg);
+      divImg.appendChild(infoContainer);
+      header.appendChild(divImg);
     })
     .catch((err) => {
       console.error("Errore nel recupero dettagli artista:", err);
     });
 };
 
-fetchArtistAlbums = (id) => {
-  // URL con il proxy di Strive School
+const fetchArtistAlbums = (id) => {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
     .then((resp) => {
-      console.log(resp);
       if (!resp.ok) {
-        if (resp.status === 404) {
-          throw new Error("Risorsa non trovata");
-        } else if (resp.status >= 500) {
-          throw new Error("Errore lato server");
-        }
+        if (resp.status === 404) throw new Error("Risorsa non trovata");
+        if (resp.status >= 500) throw new Error("Errore lato server");
         throw new Error("Errore nella fetch");
       }
       return resp.json();
     })
     .then((data) => {
-      console.log(data);
-
-      // Recupero l'elemento che conterrà gli album
       const albumList = document.getElementById("album-list");
-      albumList.innerHTML = ""; // Pulisco prima di aggiungere nuovi risultati
+      albumList.innerHTML = "";
+
       const slicedData = data.data.slice(0, 5);
       slicedData.forEach((track, index) => {
-        // Creazione dell'elemento per ogni album
         const col = document.createElement("div");
         col.className = "col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4";
 
@@ -105,13 +150,14 @@ fetchArtistAlbums = (id) => {
 
         const divDown = document.createElement("div");
         divDown.className = "text-secondary";
-        divDown.innerHTML = `<div class="d-flex align-items-center"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="rgb(179, 179, 179)" style="width: 12px; height: 12px" class="me-1">
-                  <path
-                    d="M1.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25H1.75zM0 2.75C0 1.784.784 1 1.75 1h12.5c.967 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25V2.75z"
-                  />
-                  <path d="m6 5 5.196 3L6 11V5z" />
-                </svg>
-                <span>Video Musicale</span></div>`;
+        divDown.innerHTML = `
+          <div class="d-flex align-items-center">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="rgb(179, 179, 179)" style="width: 12px; height: 12px" class="me-1">
+              <path d="M1.75 2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25H1.75zM0 2.75C0 1.784.784 1 1.75 1h12.5c.967 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25V2.75z"/>
+              <path d="m6 5 5.196 3L6 11V5z" />
+            </svg>
+            <span>Video Musicale</span>
+          </div>`;
 
         containerPdiv.appendChild(pUp);
         containerPdiv.appendChild(divDown);
