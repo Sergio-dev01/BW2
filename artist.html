@@ -90,12 +90,12 @@
                   <i class="bi bi-list-task"></i>
                 </div>
               </div>
-              <div id="artist-list" class="mt-4 d-flex flex-column gap-3 text-light"></div>
+              <div id="artist-list" class="scrollbar mt-4 d-flex flex-column gap-3 text-light"></div>
             </div>
           </div>
 
           <!-- Contenuto Centrale -->
-          <div class="col-12 col-md-8">
+          <div class="scrollbar central-main col-12 col-md-8">
             <div id="artist-header"></div>
             <div class="pt-4 ps-4 d-flex align-items-center gap-4">
               <button
@@ -111,10 +111,15 @@
 
               <button class="btnSegui">Segui</button>
 
-              <div class="d-flex gap-2">
-                <p>.</p>
-                <p>.</p>
-                <p>.</p>
+              <div>
+                <button class="btn btn-link p-0 bg-transparent border-0 mx-1">
+                  <svg class="threeDots" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="38px" height="38px">
+                    <path
+                      fill="#808080"
+                      d="M4.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm15 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-7.5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
+                    />
+                  </svg>
+                </button>
               </div>
             </div>
 
@@ -138,6 +143,79 @@
               </div>
               <div id="video-list" class="row"></div>
             </div>
+            <section class="footer-section text-light py-5">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-2">
+                    <h5>Azienda</h5>
+                    <ul class="list-unstyled">
+                      <li><a href="#" class="info-description2">Chi siamo</a></li>
+                      <li><a href="#" class="info-description2">Opportunità di lavoro</a></li>
+                      <li><a href="#" class="info-description2">For the Record</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-2">
+                    <h5>Community</h5>
+                    <ul class="list-unstyled">
+                      <li><a href="#" class="info-description2">Per artisti</a></li>
+                      <li><a href="#" class="info-description2">Sviluppatori</a></li>
+                      <li><a href="#" class="info-description2">Pubblicità</a></li>
+                      <li><a href="#" class="info-description2">Investitori</a></li>
+                      <li><a href="#" class="info-description2">Venditori</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-2">
+                    <h5>Link utili</h5>
+                    <ul class="list-unstyled">
+                      <li><a href="#" class="info-description2">Assistenza</a></li>
+                      <li><a href="#" class="info-description2">App per cellulare gratuita</a></li>
+                      <li><a href="#" class="info-description2">Diritti del consumatore</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-2">
+                    <h5>Piani Spotify</h5>
+                    <ul class="list-unstyled">
+                      <li><a href="#" class="info-description2">Premium Individual</a></li>
+                      <li><a href="#" class="info-description2">Premium Duo</a></li>
+                      <li><a href="#" class="info-description2">Premium Family</a></li>
+                      <li><a href="#" class="info-description2">Premium Student</a></li>
+                      <li><a href="#" class="info-description2">Spotify Free</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-4 d-flex justify-content-end align-items-start">
+                    <div class="d-flex gap-3">
+                      <a href="#" class="text-light icon-background"><i class="bi bi-facebook"></i></a>
+                      <a href="#" class="text-light icon-background"><i class="bi bi-twitter"></i></a>
+                      <a href="#" class="text-light icon-background"><i class="bi bi-instagram"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <hr class="separator" />
+                <div class="info d-flex flex-wrap justify-content-between align-items-center">
+                  <div class="d-flex flex-wrap">
+                    <div class="me-3">
+                      <a href="#"><span class="info-description">Informazioni legali</span></a>
+                    </div>
+                    <div class="me-3">
+                      <a href="#"><span class="info-description">Sicurezza e Centro sulla privacy</span></a>
+                    </div>
+                    <div class="me-3">
+                      <a href="#"><span class="info-description">Informativa sulla privacy</span></a>
+                    </div>
+                    <div class="me-3">
+                      <a href="#"><span class="info-description">Impostazioni cookie</span></a>
+                    </div>
+                    <div class="me-3">
+                      <a href="#"><span class="info-description">Info annunci</span></a>
+                    </div>
+                    <div class="me-3">
+                      <a href="#"><span class="info-description">Accessibilità</span></a>
+                    </div>
+                  </div>
+                  <p class="info-description m-0">&#169; 2025 Spotify AB</p>
+                </div>
+              </div>
+            </section>
           </div>
 
           <!-- Sidebar Destra -->

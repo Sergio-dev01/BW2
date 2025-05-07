@@ -12009,6 +12009,7 @@ input[type=search]::placeholder {
 
 .div-background {
   background-color: rgb(18, 18, 18);
+  padding-right: 0;
 }
 
 h1, .h1 {
@@ -12223,13 +12224,117 @@ input[type=search]::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: trasform 1.5s ease;
 }
 
 .btnSegui:hover {
-  border: 2.3px solid white;
+  border: 1.7px solid white;
+  transform: scale(1.04);
+  transform-origin: center;
 }
 
-.threeDots {
-  font-size: 2rem;
-  letter-spacing: 3rem;
+.threeDots path {
+  transition: fill 0.3s ease;
+}
+
+.threeDots:hover path {
+  fill: white;
+}
+
+.scrollbar {
+  max-height: 72vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888787;
+  border-radius: 4px;
+  border: 1px solid #888787;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #888787;
+}
+
+.footer-section {
+  background-color: transparent;
+}
+
+.footer-section h5, .footer-section .h5 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.footer-section ul {
+  padding-left: 0;
+}
+
+.footer-section a {
+  color: #b3b3b3;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-section .list-unstyled {
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.footer-section .list-unstyled li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section .text-center {
+  color: #b3b3b3;
+}
+
+.footer-section .d-inline-flex li {
+  margin-right: 1rem;
+}
+
+.footer-section .d-inline-flex li:last-child {
+  margin-right: 0;
+}
+
+.footer-section .bi {
+  font-size: 20px;
+}
+
+.icon-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: rgb(41, 41, 41);
+}
+
+.separator {
+  color: #6b6b6b;
+}
+
+.info-description {
+  font-size: 12px;
+  color: #b3b3b3;
+  margin-top: 0.5rem;
+}
+
+.info-description2 {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin-top: 0.5rem;
 }/*# sourceMappingURL=style.css.map */

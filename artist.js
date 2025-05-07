@@ -264,12 +264,6 @@ const fetchArtistVideo = id => {
 
       console.log(data);
 
-      const imgLittleCard = document.createElement("img");
-      imgLittleCard.className = "imgLittleCard";
-      imgLittleCard.src = data.data.album.cover;
-
-      littleCard.appendChild(imgLittleCard);
-
       const slicedData = data.data.slice(4);
       slicedData.forEach((track, index) => {
         const colVideo = document.createElement("div");
