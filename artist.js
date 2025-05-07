@@ -2,7 +2,7 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 // dettagli dell'artista
-const fetchArtistDetails = (id) => {
+const fetchArtistDetails = id => {
   fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${id}`, {
     method: "GET",
     headers: {
@@ -10,7 +10,7 @@ const fetchArtistDetails = (id) => {
       "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
     },
   })
-    .then((resp) => {
+    .then(resp => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -18,7 +18,7 @@ const fetchArtistDetails = (id) => {
       }
       return resp.json();
     })
-    .then((artist) => {
+    .then(artist => {
       if (!artist) {
         console.error("Dati artista non validi.");
         return;
@@ -27,7 +27,7 @@ const fetchArtistDetails = (id) => {
       const header = document.getElementById("artist-header");
 
       const divImg = document.createElement("div");
-      divImg.style.height = "350px";
+      divImg.style.height = "380px";
       divImg.style.overflow = "hidden";
       divImg.style.position = "relative";
 
@@ -37,6 +37,7 @@ const fetchArtistDetails = (id) => {
       artistImg.style.height = "100%";
       artistImg.style.width = "100%";
       artistImg.style.objectFit = "cover";
+      artistImg.style.objectPosition = "50% 10%";
 
       // Container per h1,span e svg
       const infoContainer = document.createElement("div");
@@ -102,16 +103,16 @@ const fetchArtistDetails = (id) => {
       divImg.appendChild(infoContainer);
       header.appendChild(divImg);
     })
-    .catch((err) => {
+    .catch(err => {
       console.error("Errore nel recupero dettagli artista:", err);
     });
 };
 
-const fetchArtistAlbums = (id) => {
+const fetchArtistAlbums = id => {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
-    .then((resp) => {
+    .then(resp => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -119,7 +120,7 @@ const fetchArtistAlbums = (id) => {
       }
       return resp.json();
     })
-    .then((data) => {
+    .then(data => {
       const albumList = document.getElementById("album-list");
       albumList.innerHTML = "";
 
@@ -168,7 +169,7 @@ const fetchArtistAlbums = (id) => {
         albumList.appendChild(col);
       });
     })
-    .catch((error) => {
+    .catch(error => {
       console.log(error);
     });
 };

@@ -9,19 +9,19 @@ const fetchArtists = (query = "e") => {
   };
 
   return fetch(url, options)
-    .then((response) => response.json())
-    .then((data) => data.data)
-    .catch((err) => {
+    .then(response => response.json())
+    .then(data => data.data)
+    .catch(err => {
       console.error("Errore fetch artisti Deezer:", err);
       return [];
     });
 };
 
-fetchArtists("e").then((tracks) => {
+fetchArtists("e").then(tracks => {
   const artistList = document.getElementById("artist-list");
   const uniqueArtists = [];
 
-  tracks.forEach((track) => {
+  tracks.forEach(track => {
     const artist = track.artist;
 
     if (!uniqueArtists.includes(artist.id)) {
@@ -29,6 +29,7 @@ fetchArtists("e").then((tracks) => {
 
       const artistItem = document.createElement("div");
       artistItem.className = "artist-item d-flex align-items-center gap-2 mb-2";
+      artistItem.style.cursor = "pointer";
 
       const img = document.createElement("img");
       img.src = artist.picture_small;
@@ -38,7 +39,6 @@ fetchArtists("e").then((tracks) => {
       img.height = 40;
 
       const link = document.createElement("a");
-      link.href = `artist.html?id=${artist.id}`;
       link.textContent = artist.name;
       link.className = "artist-link";
 
@@ -46,6 +46,10 @@ fetchArtists("e").then((tracks) => {
       artistItem.appendChild(link);
 
       artistList.appendChild(artistItem);
+
+      artistItem.addEventListener("click", function () {
+        window.location.href = `artist.html?id=${artist.id}`;
+      });
     }
   });
 });
