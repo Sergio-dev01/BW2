@@ -441,6 +441,12 @@ $track-height: 4px;
   opacity: 1;
 }
 
+@media screen and (min-width: 320px) and (max-width: 474px) {
+  .podcast-none {
+    display: none !important;
+  }
+}
+
 @media screen and (max-width: 475px) {
   .search-bar-div {
     display: none !important;
@@ -454,8 +460,45 @@ $track-height: 4px;
   .right-part {
     display: none !important;
   }
+  .titolo-canzone {
+    display: none !important;
+  }
+  .icone-none {
+    display: none !important;
+  }
 }
-@media screen and (max-width: 768px) {
+
+@media screen and (min-width: 476px) and (max-width: 767px) {
+  .left-part {
+    display: none !important;
+  }
+  .link-center {
+    text-align: center !important;
+  }
+  .icon-center {
+    justify-content: center !important;
+  }
+  .install-none {
+    display: none !important;
+  }
+  .search-bar-div {
+    display: none !important;
+  }
+  .icon-medium {
+    justify-content: start !important;
+  }
+  .gap-medium {
+    gap: 141px !important;
+  }
+  .titolo-canzone {
+    display: none !important;
+  }
+  .icone-none {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
   .sidebar-dx {
     display: none !important;
   }
@@ -475,6 +518,9 @@ $track-height: 4px;
     display: none !important;
   }
   .button-none {
+    display: none !important;
+  }
+  .install-none {
     display: none !important;
   }
 }
