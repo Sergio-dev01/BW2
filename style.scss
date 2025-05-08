@@ -309,10 +309,8 @@ $track-height: 4px;
 .threeDots:hover path {
   fill: white;
 }
-
+// scrollbar section
 .scrollbar {
-  max-height: 73vh;
-  overflow-y: auto;
   overflow-x: hidden;
 }
 .scrollbar-l {
@@ -321,18 +319,18 @@ $track-height: 4px;
   overflow-x: hidden;
 }
 .scrollbar-c {
-  max-height: 86vh;
+  max-height: 88vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
 .scrollbar-r {
-  max-height: 86vh;
+  max-height: 88vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 .scrollbar::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 .scrollbar::-webkit-scrollbar-track {
@@ -340,14 +338,28 @@ $track-height: 4px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background-color: #88878786;
-  border-radius: 4px;
+  background-color: #ffffff4d;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #8887873d;
+  background-color: #ffffff80;
+}
+.scrollbar::-webkit-scrollbar-thumb:active {
+  background-color: #ffffffb3;
 }
 
+//mostra-tutto
+.mostra-tutto {
+  text-decoration: none;
+  color: #b3b3b3;
+  font-weight: bold;
+}
+
+.mostra-tutto:hover {
+  text-decoration: underline;
+}
+
+// footer section
 .footer-section {
   background-color: transparent;
 }
