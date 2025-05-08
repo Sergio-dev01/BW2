@@ -310,8 +310,18 @@ $track-height: 4px;
   fill: white;
 }
 
-.scrollbar {
-  max-height: 72vh;
+.scrollbar-l {
+  max-height: 73vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.scrollbar-c {
+  max-height: 86vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.scrollbar-r {
+  max-height: 86vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -325,13 +335,12 @@ $track-height: 4px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background-color: #888787;
+  background-color: #88878786;
   border-radius: 4px;
-  border: 1px solid #888787;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #888787;
+  background-color: #8887873d;
 }
 
 .footer-section {

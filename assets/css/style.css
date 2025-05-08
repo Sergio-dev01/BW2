@@ -11947,6 +11947,7 @@ input[type=search] {
   width: 20rem;
 }
 
+<<<<<<< HEAD
 input[type=search]:focus {
   background-color: transparent;
   outline: none;
@@ -11955,6 +11956,8 @@ input[type=search]:focus {
   caret-color: white;
 }
 
+=======
+>>>>>>> feature-ivan-styling
 input[type=search]::placeholder {
   color: grey;
   padding: 0;
@@ -12145,8 +12148,20 @@ input[type=search]::placeholder {
   fill: white;
 }
 
-.scrollbar {
-  max-height: 72vh;
+.scrollbar-l {
+  max-height: 73vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.scrollbar-c {
+  max-height: 86vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.scrollbar-r {
+  max-height: 86vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -12160,13 +12175,12 @@ input[type=search]::placeholder {
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background-color: #888787;
+  background-color: rgba(136, 135, 135, 0.5254901961);
   border-radius: 4px;
-  border: 1px solid #888787;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #888787;
+  background-color: rgba(136, 135, 135, 0.2392156863);
 }
 
 .footer-section {
