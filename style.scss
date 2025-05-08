@@ -431,3 +431,12 @@ $track-height: 4px;
   color: #b3b3b3;
   margin-top: 0.5rem;
 }
+
+.playBtn {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.cardCol:hover .playBtn {
+  opacity: 1;
+}
