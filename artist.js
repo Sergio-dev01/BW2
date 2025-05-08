@@ -2,7 +2,7 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 // dettagli dell'artista
-const fetchArtistDetails = id => {
+const fetchArtistDetails = (id) => {
   fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${id}`, {
     method: "GET",
     headers: {
@@ -10,7 +10,7 @@ const fetchArtistDetails = id => {
       "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
     },
   })
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -18,7 +18,7 @@ const fetchArtistDetails = id => {
       }
       return resp.json();
     })
-    .then(artist => {
+    .then((artist) => {
       if (!artist) {
         console.error("Dati artista non validi.");
         return;
@@ -102,16 +102,16 @@ const fetchArtistDetails = id => {
       divImg.appendChild(infoContainer);
       header.appendChild(divImg);
     })
-    .catch(err => {
+    .catch((err) => {
       console.error("Errore nel recupero dettagli artista:", err);
     });
 };
 
-const fetchArtistTrack = id => {
+const fetchArtistTrack = (id) => {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -119,7 +119,7 @@ const fetchArtistTrack = id => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       const trackList = document.getElementById("track-list");
       const albumList = document.getElementById("album-list");
       trackList.innerHTML = "";
@@ -191,16 +191,16 @@ const fetchArtistTrack = id => {
         albumList.appendChild(col);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
 
-const fetchArtistAlbum = id => {
+const fetchArtistAlbum = (id) => {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -208,7 +208,7 @@ const fetchArtistAlbum = id => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       const albumList = document.getElementById("album-list");
       albumList.innerHTML = "";
 
@@ -240,16 +240,16 @@ const fetchArtistAlbum = id => {
         albumList.appendChild(col);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
 
-const fetchArtistVideo = id => {
+const fetchArtistVideo = (id) => {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -257,7 +257,7 @@ const fetchArtistVideo = id => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       const videoList = document.getElementById("video-list");
       const littleCard = document.getElementById("little-card");
       videoList.innerHTML = "";
@@ -290,16 +290,16 @@ const fetchArtistVideo = id => {
         videoList.appendChild(colVideo);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
 
-const fetchLittleCard = id => {
+const fetchLittleCard = (id) => {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -307,14 +307,14 @@ const fetchLittleCard = id => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       const littleCard = document.getElementById("little-card");
       littleCard.innerHTML = "";
 
       console.log(data);
 
       const slicedData = data.data.slice(1, 2);
-      slicedData.forEach(track => {
+      slicedData.forEach((track) => {
         const imgLittleCard = document.createElement("img");
         imgLittleCard.className = "imgLittleCard";
         imgLittleCard.src = track.album.cover;
@@ -322,7 +322,7 @@ const fetchLittleCard = id => {
         littleCard.appendChild(imgLittleCard);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -332,6 +332,71 @@ const logo = document.getElementById("logo");
 logo.addEventListener("click", function () {
   window.location.href = "index.html";
 });
+loadRandomAlbumRightbar = () => {
+  const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=a`;
+  const options = {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": token,
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    },
+  };
+
+  fetch(url, options)
+    .then((resp) => {
+      if (!resp.ok) throw new Error("Errore nel recupero della rightbar");
+      return resp.json();
+    })
+    .then((data) => {
+      const albums = data.data;
+      const rightbar = document.querySelector(".right-part");
+
+      const usedIndexes = new Set();
+
+      for (let i = 0; i < 3; i++) {
+        let randomIndex;
+        do {
+          randomIndex = Math.floor(Math.random() * albums.length);
+        } while (usedIndexes.has(randomIndex));
+        usedIndexes.add(randomIndex);
+
+        const album = albums[randomIndex];
+
+        const imageContainer = document.createElement("div");
+        imageContainer.className = "text-center mb-4";
+
+        const img = document.createElement("img");
+        img.src = album.album.cover_big;
+        img.alt = album.album.title;
+        img.className = "img-fluid rounded shadow mb-2";
+
+        const artistName = document.createElement("p");
+        artistName.className = "text-white fw-bold mb-1";
+        artistName.innerText = album.artist.name;
+        artistName.style.cursor = "pointer";
+        artistName.addEventListener("click", function () {
+          window.location.href = `artist.html?id=${album.artist.id}`;
+        });
+
+        const trackTitle = document.createElement("p");
+        trackTitle.className = "text-light small";
+        trackTitle.innerText = album.title;
+        trackTitle.style.cursor = "pointer";
+        trackTitle.addEventListener("click", function () {
+          window.location.href = `album.html?id=${album.album.id}`;
+        });
+
+        imageContainer.appendChild(img);
+        imageContainer.appendChild(artistName);
+        imageContainer.appendChild(trackTitle);
+
+        rightbar.appendChild(imageContainer);
+      }
+    })
+    .catch((error) => {
+      console.error("Errore nella rightbar:", error);
+    });
+};
 
 window.onload = () => {
   fetchArtistDetails(id);
@@ -339,4 +404,5 @@ window.onload = () => {
   fetchArtistAlbum(id);
   fetchArtistVideo(id);
   fetchLittleCard(id);
+  loadRandomAlbumRightbar();
 };

@@ -158,19 +158,25 @@ loadRandomAlbumRightbar = () => {
         img.alt = album.album.title;
         img.className = "img-fluid rounded shadow mb-2";
 
-        const artistLink = document.createElement("p");
+        const artistName = document.createElement("p");
+        artistName.className = "text-white fw-bold mb-1";
+        artistName.innerText = album.artist.name;
+        artistName.style.cursor = "pointer";
+        artistName.addEventListener("click", function () {
+          window.location.href = `artist.html?id=${album.artist.id}`;
+        });
 
-        artistLink.className = "text-white fw-bold mb-1 ";
-        artistLink.innerText = album.artist.name;
-
-        const trackLink = document.createElement("p");
-
-        trackLink.className = "text-light ";
-        trackLink.innerText = album.title;
+        const trackTitle = document.createElement("p");
+        trackTitle.className = "text-light small";
+        trackTitle.innerText = album.title;
+        trackTitle.style.cursor = "pointer";
+        trackTitle.addEventListener("click", function () {
+          window.location.href = `album.html?id=${album.album.id}`;
+        });
 
         imageContainer.appendChild(img);
-        imageContainer.appendChild(artistLink);
-        imageContainer.appendChild(trackLink);
+        imageContainer.appendChild(artistName);
+        imageContainer.appendChild(trackTitle);
 
         rightbar.appendChild(imageContainer);
       }
