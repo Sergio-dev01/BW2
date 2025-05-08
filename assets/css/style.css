@@ -11886,6 +11886,7 @@ input[type=search]::placeholder {
 .div-background {
   background-color: rgb(18, 18, 18);
   padding-right: 0;
+  height: 100%;
 }
 
 h1, .h1 {
@@ -12282,6 +12283,36 @@ input[type=search]::placeholder {
 
 .gap-custom {
   gap: 190px;
+}
+
+.card-custom {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 16px;
+  aspect-ratio: 100/57;
+  cursor: pointer;
+}
+
+.card-title-custom {
+  margin: 0 0 10px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.img-search-custom {
+  transform: rotate(25deg);
+  border-radius: 4px;
+  bottom: 0px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+  position: absolute;
+  width: 45%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  bottom: -5px;
+  right: -23px;
+  z-index: 1;
 }
 
 @media screen and (min-width: 320px) and (max-width: 474px) {
