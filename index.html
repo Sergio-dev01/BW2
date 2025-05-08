@@ -29,10 +29,18 @@
             <button class="btn-round">
               <i class="bi bi-house-door fs-5"></i>
             </button>
+
             <form class="d-flex align-items-center" role="search">
-              <div class="d-flex align-items-center searchbar">
-                <i class="bi bi-search fs-5"></i>
-                <input class="form-control me-2" type="search" placeholder="Cosa vuoi ascoltare?" aria-label="Search" />
+              <div class="d-flex align-items-center searchbar box-white position-relative">
+                <i class="bi bi-search fs-5 me-2"></i>
+
+                <input id="searchInput" class="form-control me-2" type="search" placeholder="Cosa vuoi ascoltare?" aria-label="Search" />
+
+                <div class="shortcut-on-focus" id="shortcutKeys">
+                  <kbd class="shortcut-key">Ctrl</kbd>
+                  <kbd class="shortcut-key">K</kbd>
+                </div>
+
                 <i class="bi bi-archive fs-5 icon-left-border"></i>
               </div>
             </form>
