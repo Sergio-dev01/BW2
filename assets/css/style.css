@@ -11947,7 +11947,6 @@ input[type=search] {
   width: 20rem;
 }
 
-<<<<<<< HEAD
 input[type=search]:focus {
   background-color: transparent;
   outline: none;
@@ -11956,8 +11955,6 @@ input[type=search]:focus {
   caret-color: white;
 }
 
-=======
->>>>>>> feature-ivan-styling
 input[type=search]::placeholder {
   color: grey;
   padding: 0;
