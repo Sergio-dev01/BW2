@@ -9,7 +9,7 @@ mainFetch = (containerNum, start, end) => {
   };
 
   fetch(url, options)
-    .then(resp => {
+    .then((resp) => {
       console.log(resp);
       if (!resp.ok) {
         if (resp.status === 404) {
@@ -21,13 +21,13 @@ mainFetch = (containerNum, start, end) => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       console.log(data);
       const slicedData = data.data.slice(start, end);
       console.log(slicedData);
       const grid = document.querySelector(`.${containerNum}-main-grid-container`);
 
-      slicedData.forEach(artist => {
+      slicedData.forEach((artist) => {
         console.log(artist);
         console.log(artist.album);
         const col = document.createElement("div");
@@ -54,7 +54,7 @@ mainFetch = (containerNum, start, end) => {
         grid.appendChild(col);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -70,7 +70,7 @@ upperMainFetch = () => {
   };
 
   fetch(url, options)
-    .then(resp => {
+    .then((resp) => {
       console.log(resp);
       if (!resp.ok) {
         if (resp.status === 404) {
@@ -82,13 +82,13 @@ upperMainFetch = () => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       console.log(data);
       const slicedData = data.data.slice(0, 8);
       console.log(slicedData);
       const grid = document.querySelector(`.upper-main-grid-container`);
 
-      slicedData.forEach(artist => {
+      slicedData.forEach((artist) => {
         console.log(artist);
         console.log(artist.album);
         const col = document.createElement("div");
@@ -115,8 +115,68 @@ upperMainFetch = () => {
         grid.appendChild(col);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
+    });
+};
+
+loadRandomAlbumRightbar = () => {
+  const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=a`;
+  const options = {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": token,
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    },
+  };
+
+  fetch(url, options)
+    .then((resp) => {
+      if (!resp.ok) throw new Error("Errore nel recupero della rightbar");
+      return resp.json();
+    })
+    .then((data) => {
+      const albums = data.data;
+      const rightbar = document.querySelector(".right-part");
+
+      const usedIndexes = new Set();
+
+      for (let i = 0; i < 3; i++) {
+        let randomIndex;
+        do {
+          randomIndex = Math.floor(Math.random() * albums.length);
+        } while (usedIndexes.has(randomIndex));
+        usedIndexes.add(randomIndex);
+
+        const album = albums[randomIndex];
+
+        const imageContainer = document.createElement("div");
+        imageContainer.className = "text-center mb-4";
+
+        const img = document.createElement("img");
+        img.src = album.album.cover_big;
+        img.alt = album.album.title;
+        img.className = "img-fluid rounded shadow mb-2";
+
+        const artistLink = document.createElement("p");
+
+        artistLink.className = "text-white fw-bold mb-1 ";
+        artistLink.innerText = album.artist.name;
+
+        const trackLink = document.createElement("p");
+
+        trackLink.className = "text-light ";
+        trackLink.innerText = album.title;
+
+        imageContainer.appendChild(img);
+        imageContainer.appendChild(artistLink);
+        imageContainer.appendChild(trackLink);
+
+        rightbar.appendChild(imageContainer);
+      }
+    })
+    .catch((error) => {
+      console.error("Errore nella rightbar:", error);
     });
 };
 
@@ -125,4 +185,5 @@ window.onload = () => {
   mainFetch("second", 7, 13);
   mainFetch("third", 14, 20);
   upperMainFetch();
+  loadRandomAlbumRightbar();
 };
