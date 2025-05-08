@@ -186,4 +186,12 @@ window.onload = () => {
   mainFetch("third", 14, 20);
   upperMainFetch();
   loadRandomAlbumRightbar();
+
+  const input = document.getElementById("searchInput");
+  const shortcuts = document.getElementById("shortcutKeys");
+
+  if (input && shortcuts) {
+    input.addEventListener("focus", () => (shortcuts.style.display = "flex"));
+    input.addEventListener("blur", () => (shortcuts.style.display = "none"));
+  }
 };
