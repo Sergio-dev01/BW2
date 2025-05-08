@@ -1,5 +1,5 @@
 mainFetch = (containerNum, start, end) => {
-  const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=e`;
+  const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=i`;
   const options = {
     method: "GET",
     headers: {
@@ -9,7 +9,7 @@ mainFetch = (containerNum, start, end) => {
   };
 
   fetch(url, options)
-    .then(resp => {
+    .then((resp) => {
       console.log(resp);
       if (!resp.ok) {
         if (resp.status === 404) {
@@ -21,13 +21,13 @@ mainFetch = (containerNum, start, end) => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       console.log(data);
       const slicedData = data.data.slice(start, end);
       console.log(slicedData);
       const grid = document.querySelector(`.${containerNum}-main-grid-container`);
 
-      slicedData.forEach(artist => {
+      slicedData.forEach((artist) => {
         console.log(artist);
         console.log(artist.album);
         const col = document.createElement("div");
@@ -79,9 +79,13 @@ mainFetch = (containerNum, start, end) => {
         card.appendChild(div);
         col.appendChild(card);
         grid.appendChild(col);
+
+        col.addEventListener("click", function () {
+          window.location.href = `album.html?id=${artist.album.id}`;
+        });
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -97,7 +101,7 @@ upperMainFetch = () => {
   };
 
   fetch(url, options)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) {
         if (resp.status === 404) {
           throw new Error("Risorsa non trovata");
@@ -108,13 +112,13 @@ upperMainFetch = () => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       const slicedData = data.data.slice(0, 8);
       const grid = document.querySelector(`.upper-main-grid-container`);
 
-      slicedData.forEach(artist => {
+      slicedData.forEach((artist) => {
         const col = document.createElement("div");
-        col.className = "col-6 col-sm-4 col-md-3 col-lg-3 px-1 mb-2 cardCol";
+        col.className = " col-md-6 col-lg-3 px-1 mb-2 cardCol";
 
         const card = document.createElement("div");
         card.className = "pb-0 upperCard position-relative";
@@ -158,9 +162,13 @@ upperMainFetch = () => {
         card.appendChild(div);
         col.appendChild(card);
         grid.appendChild(col);
+
+        col.addEventListener("click", function () {
+          window.location.href = `album.html?id=${artist.album.id}`;
+        });
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -176,11 +184,11 @@ loadRandomAlbumRightbar = () => {
   };
 
   fetch(url, options)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) throw new Error("Errore nel recupero della rightbar");
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       const albums = data.data;
       const rightbar = document.querySelector(".right-part");
 
@@ -201,6 +209,7 @@ loadRandomAlbumRightbar = () => {
         const img = document.createElement("img");
         img.src = album.album.cover_big;
         img.alt = album.album.title;
+        img.style.cursor = "pointer";
         img.className = "img-fluid rounded shadow mb-2";
 
         const artistName = document.createElement("p");
@@ -224,9 +233,13 @@ loadRandomAlbumRightbar = () => {
         imageContainer.appendChild(trackTitle);
 
         rightbar.appendChild(imageContainer);
+
+        img.addEventListener("click", function () {
+          window.location.href = `album.html?id=${album.album.id}`;
+        });
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Errore nella rightbar:", error);
     });
 };

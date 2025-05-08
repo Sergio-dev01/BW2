@@ -25,7 +25,7 @@
             <i class="bi bi-spotify fs-2 text-white"></i>
           </a>
 
-          <div class="navbar-nav d-flex flex-row gap-2 align-items-center">
+          <div class="navbar-nav d-flex flex-row gap-2 align-items-center search-bar-div">
             <button class="btn-round">
               <i class="bi bi-house-door fs-5"></i>
             </button>
@@ -47,7 +47,7 @@
           </div>
 
           <div class="navbar-nav d-flex flex-row gap-3 align-items-center" style="font-size: larger">
-            <div class="nav-item">
+            <div class="nav-item installa-app">
               <a class="nav-link text-white" href="https://open.spotify.com/download" target="_blank">
                 <i class="bi bi-arrow-down-circle fs-6"></i> Installa app
               </a>
@@ -75,13 +75,13 @@
     <!-- Main -->
     <main>
       <div class="container-fluid">
-        <div class="row g-2">
+        <div class="row g-2 contenitore-medio">
           <!-- Sidebar Sinistra -->
           <div class="left-part col-12 col-md-2">
             <div class="div-background p-3 pe-0 rounded-3">
               <div class="d-flex align-items-center justify-content-between pe-3">
                 <h1>La tua libreria</h1>
-                <div class="d-flex align-items-center gap-4">
+                <div class="d-flex align-items-center gap-4 button-none">
                   <div class="crea-btn btn"><i class="bi bi-plus-lg"></i> <span>Crea</span></div>
                   <i class="bi bi-arrows-angle-expand"></i>
                 </div>
@@ -221,7 +221,7 @@
               <!-- Sidebar Destra -->
             </div>
           </div>
-          <div class="col-12 col-md-2">
+          <div class="col-12 col-md-2 sidebar-dx">
             <div class="scrollbar scrollbar-r div-background right-part rounded-3 p-3"></div>
           </div>
         </div>
@@ -231,9 +231,9 @@
     <!-- Footer -->
     <footer class="player-bar fixed-bottom py-3">
       <div class="container-fluid">
-        <div class="row">
+        <div class="row div-space">
           <!-- Left section: Song Info -->
-          <div class="col-12 col-md-4 d-flex align-items-center mb-2 mb-md-0">
+          <div class="col-12 col-md-4 d-flex align-items-center mb-2 mb-md-0 titolo-canzone">
             <img src="assets2/imgs/search/image-2.jpg" alt="cover" class="img-fluid me-3 rounded-1" style="width: 56px; height: 56px" />
             <div class="d-flex flex-column">
               <div class="song-title">
@@ -317,7 +317,7 @@
 
           <!-- Right section: Volume & More -->
           <div class="col-12 col-md-4 d-flex justify-content-md-end align-items-center gap-3">
-            <div class="d-flex align-items-center gap-3">
+            <div class="d-flex align-items-center gap-3 icone-none">
               <div class="d-flex flex-column align-items-center listening-btn-wrapper">
                 <button class="btn btn-link p-0 bg-transparent border-0 listening-btn active">
                   <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#1db954" width="16" height="16">

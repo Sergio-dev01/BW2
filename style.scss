@@ -440,3 +440,41 @@ $track-height: 4px;
 .cardCol:hover .playBtn {
   opacity: 1;
 }
+
+@media screen and (max-width: 475px) {
+  .search-bar-div {
+    display: none !important;
+  }
+  .installa-app {
+    display: none !important;
+  }
+  .left-part {
+    display: none !important;
+  }
+  .right-part {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .sidebar-dx {
+    display: none !important;
+  }
+  .contenitore-medio {
+    justify-content: none;
+  }
+  .left-part {
+    width: 33%;
+  }
+  .titolo-canzone {
+    display: none !important;
+  }
+  .div-space {
+    justify-content: end;
+  }
+  .icone-none {
+    display: none !important;
+  }
+  .button-none {
+    display: none !important;
+  }
+}
