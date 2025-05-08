@@ -12145,6 +12145,12 @@ input[type=search]::placeholder {
   fill: white;
 }
 
+.scrollbar {
+  max-height: 73vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .scrollbar-l {
   max-height: 73vh;
   overflow-y: auto;
