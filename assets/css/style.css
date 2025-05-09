@@ -12281,10 +12281,9 @@ input[type=search]::placeholder {
   opacity: 1;
 }
 
-.gap-custom {
+/*.gap-custom {
   gap: 190px;
-}
-
+}*/
 .card-custom {
   border-radius: 8px;
   overflow: hidden;
