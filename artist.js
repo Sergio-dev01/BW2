@@ -269,6 +269,10 @@ const fetchArtistAlbum = id => {
         p.className = "card-text text-white";
         p.innerText = track.album.title;
 
+        col.addEventListener("click", function () {
+          window.location.href = `album.html?id=${track.album.id}`;
+        });
+
         div.appendChild(p);
         cardAlbum.appendChild(imgAlbum);
         cardAlbum.appendChild(div);
@@ -318,6 +322,10 @@ const fetchArtistVideo = id => {
         const p = document.createElement("p");
         p.className = "card-text text-white";
         p.innerText = track.album.title;
+
+        colVideo.addEventListener("click", function () {
+          window.location.href = `album.html?id=${track.album.id}`;
+        });
 
         divVideo.appendChild(p);
         cardVideo.appendChild(imgVideo);

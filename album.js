@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
-const fetchAlbumDetails = (id) => {
+const fetchAlbumDetails = id => {
   fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${id}`, {
     method: "GET",
     headers: {
@@ -9,11 +9,13 @@ const fetchAlbumDetails = (id) => {
       "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
     },
   })
-    .then((resp) => {
+    .then(resp => {
       if (!resp.ok) throw new Error("Errore nel recupero album");
       return resp.json();
     })
-    .then((album) => {
+    .then(album => {
+      console.log("album", album);
+      const artistId = album.artist.id;
       const header = document.getElementById("artist-header");
       header.innerHTML = "";
 
@@ -94,53 +96,52 @@ const fetchAlbumDetails = (id) => {
         card.appendChild(containerPdiv);
         trackList.appendChild(card);
       });
-
-      fetchArtistDiscography(album.artist.id, album.id);
     })
-    .catch((err) => {
+    .catch(err => {
       console.error("Errore nel recupero dettagli album:", err);
     });
 };
 
-const fetchArtistDiscography = (artistId, currentAlbumId) => {
-  fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/albums`, {
-    method: "GET",
-    headers: {
-      "x-rapidapi-key": token,
-      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-    },
-  })
-    .then((resp) => {
-      if (!resp.ok) throw new Error("Errore nel recupero discografia");
+const fetchArtistAlbum = id => {
+  const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
+
+  fetch(url)
+    .then(resp => {
+      if (!resp.ok) {
+        if (resp.status === 404) throw new Error("Risorsa non trovata");
+        if (resp.status >= 500) throw new Error("Errore lato server");
+        throw new Error("Errore nella fetch");
+      }
       return resp.json();
     })
-    .then((data) => {
+    .then(album => {
       const albumList = document.getElementById("album-list");
       albumList.innerHTML = "";
 
-      const albums = data.data.filter((album) => album.id != currentAlbumId).slice(0, 6);
+      console.log(album);
 
-      albums.forEach((album) => {
+      const slicedData = album.data.slice(0, 6);
+      slicedData.forEach((track, index) => {
         const col = document.createElement("div");
         col.className = "col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4";
 
         const cardAlbum = document.createElement("div");
         cardAlbum.className = "card p-3 pb-0 h-100";
-        cardAlbum.style.cursor = "pointer";
-        cardAlbum.addEventListener("click", () => {
-          window.location.href = `album.html?id=${album.id}`;
-        });
 
         const imgAlbum = document.createElement("img");
         imgAlbum.className = "card-img-top";
-        imgAlbum.src = album.cover_medium;
+        imgAlbum.src = track.album.cover;
 
         const div = document.createElement("div");
         div.className = "card-body p-0 py-3";
 
         const p = document.createElement("p");
         p.className = "card-text text-white";
-        p.innerText = album.title;
+        p.innerText = track.album.title;
+
+        col.addEventListener("click", function () {
+          window.location.href = `album.html?id=${track.album.id}`;
+        });
 
         div.appendChild(p);
         cardAlbum.appendChild(imgAlbum);
@@ -149,12 +150,65 @@ const fetchArtistDiscography = (artistId, currentAlbumId) => {
         albumList.appendChild(col);
       });
     })
-    .catch((error) => {
-      console.error("Errore nella discografia:", error);
+    .catch(error => {
+      console.log(error);
     });
 };
 
-const fetchLittleCard = (id) => {
+const fetchArtistVideo = id => {
+  const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
+
+  fetch(url)
+    .then(resp => {
+      if (!resp.ok) {
+        if (resp.status === 404) throw new Error("Risorsa non trovata");
+        if (resp.status >= 500) throw new Error("Errore lato server");
+        throw new Error("Errore nella fetch");
+      }
+      return resp.json();
+    })
+    .then(album => {
+      const videoList = document.getElementById("video-list");
+      videoList.innerHTML = "";
+
+      console.log(album);
+
+      const slicedData = album.data.slice(4);
+      slicedData.forEach((track, index) => {
+        const colVideo = document.createElement("div");
+        colVideo.className = "col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4";
+
+        const cardVideo = document.createElement("div");
+        cardVideo.className = "card p-3 pb-0 h-100";
+
+        const imgVideo = document.createElement("img");
+        imgVideo.className = "card-img-top";
+        imgVideo.src = track.album.cover;
+
+        const divVideo = document.createElement("div");
+        divVideo.className = "card-body p-0 py-3";
+
+        const p = document.createElement("p");
+        p.className = "card-text text-white";
+        p.innerText = track.album.title;
+
+        colVideo.addEventListener("click", function () {
+          window.location.href = `album.html?id=${track.album.id}`;
+        });
+
+        divVideo.appendChild(p);
+        cardVideo.appendChild(imgVideo);
+        cardVideo.appendChild(divVideo);
+        colVideo.appendChild(cardVideo);
+        videoList.appendChild(colVideo);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+const fetchLittleCard = id => {
   fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${id}`, {
     method: "GET",
     headers: {
@@ -162,8 +216,8 @@ const fetchLittleCard = (id) => {
       "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
     },
   })
-    .then((resp) => resp.json())
-    .then((album) => {
+    .then(resp => resp.json())
+    .then(album => {
       const littleCard = document.getElementById("little-card");
       littleCard.innerHTML = "";
 
@@ -173,7 +227,7 @@ const fetchLittleCard = (id) => {
 
       littleCard.appendChild(imgLittleCard);
     })
-    .catch((error) => {
+    .catch(error => {
       console.log(error);
     });
 };
@@ -189,11 +243,11 @@ const loadRandomAlbumRightbar = () => {
   };
 
   fetch(url, options)
-    .then((resp) => {
+    .then(resp => {
       if (!resp.ok) throw new Error("Errore nella rightbar");
       return resp.json();
     })
-    .then((data) => {
+    .then(data => {
       const albums = data.data;
       const rightbar = document.querySelector(".right-part");
       rightbar.innerHTML = "";
@@ -238,7 +292,7 @@ const loadRandomAlbumRightbar = () => {
         rightbar.appendChild(imageContainer);
       }
     })
-    .catch((error) => {
+    .catch(error => {
       console.error("Errore nella rightbar:", error);
     });
 };
@@ -248,8 +302,34 @@ logo.addEventListener("click", function () {
   window.location.href = "index.html";
 });
 
+const fetchAlbumDetails2 = id => {
+  fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${id}`, {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": token,
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    },
+  })
+    .then(resp => {
+      if (!resp.ok) throw new Error("Errore nel recupero album");
+      return resp.json();
+    })
+    .then(album => {
+      console.log("album", album);
+
+      const artistId = album.artist.id;
+
+      fetchArtistAlbum(artistId);
+      fetchArtistVideo(artistId);
+    })
+    .catch(err => {
+      console.error("Errore nel recupero dettagli album:", err);
+    });
+};
+
 window.onload = () => {
   fetchAlbumDetails(id);
   fetchLittleCard(id);
   loadRandomAlbumRightbar();
+  fetchAlbumDetails2(id);
 };
