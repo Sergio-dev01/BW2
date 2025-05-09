@@ -127,10 +127,21 @@ const fetchArtistTrack = (id) => {
 
       console.log(data);
 
-      const slicedData = data.data.slice(0, 5);
+      const modifiedSongs = data.data.map((song) => ({
+        ...song,
+        totalPlays: (Math.floor(Math.random() * (20000000 - 1000000 + 1)) + 1000000).toLocaleString("it-IT"),
+        durationInMinutes: (song.duration / 60).toFixed(2),
+      }));
+
+      console.log("canzoni modificate", modifiedSongs);
+
+      const slicedData = modifiedSongs.slice(0, 5);
       slicedData.forEach((track, index) => {
+        const flexDiv = document.createElement("div");
+        flexDiv.className = "d-flex align-items-center flexDiv mb-2";
+
         const card = document.createElement("div");
-        card.className = "d-flex align-items-center gap-2 p-3 pb-0";
+        card.className = "d-flex align-items-center gap-2 pb-0 px-3";
 
         const trackNumber = document.createElement("span");
         trackNumber.className = "me-2 text-secondary";
@@ -160,12 +171,37 @@ const fetchArtistTrack = (id) => {
             <span>Video Musicale</span>
           </div>`;
 
+        const rightPartDiv = document.createElement("div");
+        rightPartDiv.className = "d-flex justify-content-between gap-3 p-3 rightPartDiv";
+
+        const allPlays = document.createElement("p");
+        allPlays.className = "text-secondary m-0";
+        allPlays.innerText = track.totalPlays;
+
+        const songTime = document.createElement("p");
+        songTime.className = "text-secondary m-0";
+        songTime.innerText = track.durationInMinutes;
+
+        flexDiv.addEventListener("mouseover", () => {
+          trackNumber.innerHTML = `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#6C757D" style="width: 13px; height: 13px">
+          <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z" />
+        </svg>`;
+        });
+
+        flexDiv.addEventListener("mouseout", () => {
+          trackNumber.innerText = `${index + 1}`;
+        });
+
         containerPdiv.appendChild(pUp);
         containerPdiv.appendChild(divDown);
         card.appendChild(trackNumber);
         card.appendChild(img);
         card.appendChild(containerPdiv);
-        trackList.appendChild(card);
+        rightPartDiv.appendChild(allPlays);
+        rightPartDiv.appendChild(songTime);
+        flexDiv.appendChild(card);
+        flexDiv.appendChild(rightPartDiv);
+        trackList.appendChild(flexDiv);
 
         const col = document.createElement("div");
         col.className = "col-12 col-sm-6 col-md-4 col-lg-2 px-1 mb-4";

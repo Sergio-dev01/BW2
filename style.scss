@@ -477,6 +477,22 @@ $track-height: 4px;
   z-index: 1;
 }
 
+.flexDiv {
+  gap: 290px;
+  border-radius: 5px;
+}
+
+.flexDiv:hover {
+  background-color: #2b2a2a;
+}
+
+.flexDiv:active {
+  background-color: lighten($color: #2b2a2a, $amount: 10%);
+}
+
+.rightPartDiv {
+  width: 300px;
+}
 //media-queries
 @media screen and (min-width: 320px) and (max-width: 474px) {
   .podcast-none {
