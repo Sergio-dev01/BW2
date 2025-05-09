@@ -12010,6 +12010,7 @@ input[type=search]::placeholder {
 .div-background {
   background-color: rgb(18, 18, 18);
   padding-right: 0;
+  height: 100%;
 }
 
 h1, .h1 {
@@ -12413,6 +12414,45 @@ input[type=search]::placeholder {
   opacity: 1;
 }
 
+/*.gap-custom {
+  gap: 190px;
+}*/
+.card-custom {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 16px;
+  aspect-ratio: 100/57;
+  cursor: pointer;
+}
+
+.card-title-custom {
+  margin: 0 0 10px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.img-search-custom {
+  transform: rotate(25deg);
+  border-radius: 4px;
+  bottom: 0px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+  position: absolute;
+  width: 45%;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  bottom: -5px;
+  right: -23px;
+  z-index: 1;
+}
+
+@media screen and (min-width: 320px) and (max-width: 474px) {
+  .podcast-none {
+    display: none !important;
+  }
+}
 @media screen and (max-width: 475px) {
   .search-bar-div {
     display: none !important;
@@ -12426,8 +12466,43 @@ input[type=search]::placeholder {
   .right-part {
     display: none !important;
   }
+  .titolo-canzone {
+    display: none !important;
+  }
+  .icone-none {
+    display: none !important;
+  }
 }
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 476px) and (max-width: 767px) {
+  .left-part {
+    display: none !important;
+  }
+  .link-center {
+    text-align: center !important;
+  }
+  .icon-center {
+    justify-content: center !important;
+  }
+  .install-none {
+    display: none !important;
+  }
+  .search-bar-div {
+    display: none !important;
+  }
+  .icon-medium {
+    justify-content: start !important;
+  }
+  .gap-medium {
+    gap: 141px !important;
+  }
+  .titolo-canzone {
+    display: none !important;
+  }
+  .icone-none {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
   .sidebar-dx {
     display: none !important;
   }
@@ -12447,6 +12522,9 @@ input[type=search]::placeholder {
     display: none !important;
   }
   .button-none {
+    display: none !important;
+  }
+  .install-none {
     display: none !important;
   }
 }/*# sourceMappingURL=style.css.map */
