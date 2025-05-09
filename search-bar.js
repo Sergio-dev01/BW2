@@ -34,7 +34,7 @@ searchInput.addEventListener("input", () => {
           let textContent = "";
 
           if (item.type === "track") {
-            url = `track.html?id=${item.id}`;
+            url = `artist.html?id=${item.id}`;
             textContent = `${item.title} – ${item.artist.name}`;
           } else if (item.type === "artist") {
             url = `artist.html?id=${item.id}`;
