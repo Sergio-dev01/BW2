@@ -285,6 +285,7 @@
               </button>
               <button
                 class="btn btn-link p-0 rounded-circle d-flex justify-content-center align-items-center"
+                id="playBtn"
                 style="width: 32px; height: 32px; background-color: #efefef"
               >
                 <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="black" style="width: 16px; height: 16px">
@@ -385,6 +386,7 @@
               </button>
             </div>
           </div>
+          <audio id="player" controls style="max-width: 300px" class="d-none"></audio>
         </div>
       </div>
     </footer>
@@ -398,5 +400,6 @@
     <script src="./token.js"></script>
     <script src="./artist.js"></script>
     <script src="library.js"></script>
+    <script src="./audio.js"></script>
   </body>
 </html>
