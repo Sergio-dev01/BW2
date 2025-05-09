@@ -1,3 +1,6 @@
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
 const playBtn = document.getElementById("playBtn");
 const playIcon = document.getElementById("play-icon");
 const pauseIcon = document.getElementById("pause-icon");
