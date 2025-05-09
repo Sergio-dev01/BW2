@@ -1,11 +1,11 @@
 document.getElementById("playBtn").addEventListener("click", () => {
-  const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem;`;
+  const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem`;
   const options = {
     method: "GET",
     headers: {
       "x-rapidapi-key": token,
-      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
-    }
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    },
   };
 
   fetch(url, options)
@@ -21,7 +21,7 @@ document.getElementById("playBtn").addEventListener("click", () => {
       audio.src = previewUrl;
       audio.play();
 
-      audioInfo.textContent = `${artist} - ${title};`;
+      audioInfo.textContent = `${artist} - ${title}`;
     })
     .catch((err) => {
       console.error("Errore API:", err);
