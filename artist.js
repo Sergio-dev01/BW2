@@ -2,15 +2,15 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 // dettagli dell'artista
-const fetchArtistDetails = id => {
+const fetchArtistDetails = (id) => {
   fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${id}`, {
     method: "GET",
     headers: {
       "x-rapidapi-key": token,
-      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-    },
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+    }
   })
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -18,7 +18,7 @@ const fetchArtistDetails = id => {
       }
       return resp.json();
     })
-    .then(artist => {
+    .then((artist) => {
       if (!artist) {
         console.error("Dati artista non validi.");
         return;
@@ -102,16 +102,16 @@ const fetchArtistDetails = id => {
       divImg.appendChild(infoContainer);
       header.appendChild(divImg);
     })
-    .catch(err => {
+    .catch((err) => {
       console.error("Errore nel recupero dettagli artista:", err);
     });
 };
 
-const fetchArtistTrack = id => {
+const fetchArtistTrack = (id) => {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -119,7 +119,7 @@ const fetchArtistTrack = id => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       const trackList = document.getElementById("track-list");
       const albumList = document.getElementById("album-list");
       trackList.innerHTML = "";
@@ -127,10 +127,10 @@ const fetchArtistTrack = id => {
 
       console.log(data);
 
-      const modifiedSongs = data.data.map(song => ({
+      const modifiedSongs = data.data.map((song) => ({
         ...song,
         totalPlays: (Math.floor(Math.random() * (20000000 - 1000000 + 1)) + 1000000).toLocaleString("it-IT"),
-        durationInMinutes: (song.duration / 60).toFixed(2),
+        durationInMinutes: (song.duration / 60).toFixed(2)
       }));
 
       console.log("canzoni modificate", modifiedSongs);
@@ -139,6 +139,7 @@ const fetchArtistTrack = id => {
       slicedData.forEach((track, index) => {
         const flexDiv = document.createElement("div");
         flexDiv.className = "d-flex align-items-center flexDiv mb-2";
+        flexDiv.style.cursor = "pointer";
 
         const card = document.createElement("div");
         card.className = "d-flex align-items-center gap-2 pb-0 px-3";
@@ -187,6 +188,29 @@ const fetchArtistTrack = id => {
           <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z" />
         </svg>`;
         });
+        // funzione per cambiare cover-img song-title artist-name in player-bar
+        function updatePlayerBarInfo(track) {
+          const playerCoverImg = document.getElementById("player-bar-cover-img");
+          const playerSongTitle = document.getElementById("player-bar-song-title");
+          const playerArtistName = document.getElementById("player-bar-artist-name");
+
+          if (playerCoverImg) {
+            playerCoverImg.src = track.album.cover_small;
+            playerCoverImg.alt = track.title;
+          }
+
+          if (playerSongTitle) {
+            playerSongTitle.textContent = track.title;
+          }
+
+          if (playerArtistName) {
+            playerArtistName.textContent = track.artist.name;
+          }
+        }
+        flexDiv.addEventListener("click", () => {
+          console.log("Traccia cliccata:", track);
+          updatePlayerBarInfo(track);
+        });
 
         flexDiv.addEventListener("mouseout", () => {
           trackNumber.innerText = `${index + 1}`;
@@ -227,16 +251,16 @@ const fetchArtistTrack = id => {
         albumList.appendChild(col);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
 
-const fetchArtistAlbum = id => {
+const fetchArtistAlbum = (id) => {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -244,7 +268,7 @@ const fetchArtistAlbum = id => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       const albumList = document.getElementById("album-list");
       albumList.innerHTML = "";
 
@@ -280,16 +304,16 @@ const fetchArtistAlbum = id => {
         albumList.appendChild(col);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
 
-const fetchArtistVideo = id => {
+const fetchArtistVideo = (id) => {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -297,7 +321,7 @@ const fetchArtistVideo = id => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       const videoList = document.getElementById("video-list");
       const littleCard = document.getElementById("little-card");
       videoList.innerHTML = "";
@@ -334,16 +358,16 @@ const fetchArtistVideo = id => {
         videoList.appendChild(colVideo);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
 
-const fetchLittleCard = id => {
+const fetchLittleCard = (id) => {
   const url = `https://striveschool-api.herokuapp.com/api/deezer/artist/${id}/top?limit=10`;
 
   fetch(url)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) {
         if (resp.status === 404) throw new Error("Risorsa non trovata");
         if (resp.status >= 500) throw new Error("Errore lato server");
@@ -351,14 +375,14 @@ const fetchLittleCard = id => {
       }
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       const littleCard = document.getElementById("little-card");
       littleCard.innerHTML = "";
 
       console.log(data);
 
       const slicedData = data.data.slice(1, 2);
-      slicedData.forEach(track => {
+      slicedData.forEach((track) => {
         const imgLittleCard = document.createElement("img");
         imgLittleCard.className = "imgLittleCard";
         imgLittleCard.src = track.album.cover;
@@ -366,7 +390,7 @@ const fetchLittleCard = id => {
         littleCard.appendChild(imgLittleCard);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
 };
@@ -382,16 +406,16 @@ loadRandomAlbumRightbar = () => {
     method: "GET",
     headers: {
       "x-rapidapi-key": token,
-      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-    },
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+    }
   };
 
   fetch(url, options)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) throw new Error("Errore nel recupero della rightbar");
       return resp.json();
     })
-    .then(data => {
+    .then((data) => {
       const albums = data.data;
       const rightbar = document.querySelector(".right-part");
 
@@ -437,7 +461,7 @@ loadRandomAlbumRightbar = () => {
         rightbar.appendChild(imageContainer);
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Errore nella rightbar:", error);
     });
 };
@@ -448,5 +472,4 @@ window.onload = () => {
   fetchArtistAlbum(id);
   fetchArtistVideo(id);
   fetchLittleCard(id);
-  loadRandomAlbumRightbar();
 };
