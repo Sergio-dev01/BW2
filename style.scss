@@ -315,19 +315,31 @@ $track-height: 4px;
   overflow-x: hidden;
 }
 .scrollbar-l {
-  max-height: 73vh;
-  overflow-y: auto;
+  max-height: 72vh;
+  overflow-y: hidden;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
+  &:hover {
+    overflow-y: auto;
+  }
 }
 .scrollbar-c {
-  max-height: 88vh;
-  overflow-y: auto;
+  max-height: 86vh;
+  overflow-y: hidden;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
+  &:hover {
+    overflow-y: auto;
+  }
 }
 .scrollbar-r {
-  max-height: 88vh;
-  overflow-y: auto;
+  max-height: 86vh;
+  overflow-y: hidden;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
+  &:hover {
+    overflow-y: auto;
+  }
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -344,6 +356,7 @@ $track-height: 4px;
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #ffffff80;
+  overflow: auto;
 }
 .scrollbar::-webkit-scrollbar-thumb:active {
   background-color: #ffffffb3;
